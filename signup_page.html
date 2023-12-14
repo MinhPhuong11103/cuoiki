@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sign up </title>
+    
+	<style>
+		body{
+            background-image:url('C:/Tư liệu sign up/bgsu.png') ;
+            background-repeat: no-repeat;
+            background-size: 1410px 750px;
+        }
+        #logo{
+            position: relative;
+            top:-25px;
+            left: 40px;
+         }
+        #textsu{
+        	position: relative;
+            top: 120px;
+            left: -5px;
+
+        }
+        p{
+            font-size: 17px;
+            position: relative;
+            top: 105px;
+            left: 170px;
+            color: #230264;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #wrapper{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: 60vh;
+        }
+        form{
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 79%;
+            border-radius: 10px;
+            font-size: 20px;
+            padding:40px;
+        }
+        
+        .form-group{
+            margin-bottom: 15px;
+            position: relative;
+        }
+        input{
+            height: 20px;
+            width: 400px;
+            outline: none;
+            border: 2px solid #666666;
+            padding: 10px;
+            border-radius: 35px;
+            font-size: inherit;
+            color: black;
+            transition: all 0.3s ease-in-out;
+        }
+        label{
+            position: absolute;
+            padding: 0px 5px;
+            left: 5px;
+            top: 50%;
+            /* Quan trọng  */
+            pointer-events: none;/*Vô hiệu hóa sự kiện chuột cho label*/
+            transform: translateY(-50%);/*Di chuyển label lên trên 50% của chính nó*/
+            background: white;
+            transition: all 0.3s ease-in-out;/*Hiệu ứng chuyển đổi cho tất cả các thuộc tính label trong 0.3s, hiệu ứng được chuyển đổi theo kiểu ease-in-out*/
+            font-family: Arial, sans-serif;
+        }
+        .form-group input:focus {
+            border: 2px solid #1a73e8;/*Màu khung thay đổi khi click vào*/
+        }
+        .form-group input:focus + label, .form-group input:valid + label{
+            top: 0px;
+            font-size: 13px;/*Cỡ chữ hiển thị sau khi click */ 
+            font-weight: 300;
+            color: #1a73e8;
+        }
+        #btn-signup{
+            height:50px;
+            width:420px;
+            background: #230264;
+            color: white;
+            cursor: pointer;
+        }
+        #btn-signup:hover{
+            opacity: 0.45;/*Hiệu ứng mờ nhẹ btn*/
+        }
+
+        
+	</style>
+
+</head>
+<body>
+	<img src="C:/Tư liệu sign up/Logo web(01).png" alt="" width="110px" id="logo">
+	<img src="C:/Tư liệu sign up/su text 2.png " alt="" width="459px" id="textsu">
+	<p>Welcome to the Study Core Of The Web</p>
+	<div id="wrapper">
+        <form  onsubmit="return validateForm()" >
+            <h3 id="textsignup" align="center" style="font-size:45px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Sign Up</h3>
+            <div class="form-group">
+                <input type="text" id="Username" name=" Username" required>
+                <label for="">Username</label>
+            </div>
+            <div class="form-group">
+                <input type="password" name="Enter password" id="Password" required>
+                <label for="">Pasword</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="Confirm_Password" name="Confirm password" required>
+                <label for="">Confirm Password</label>
+            </div>
+            <div class="form-group">
+                <input type="date" id="date_of_birth" name="Date of birth" required>
+                <label for="">Date of birth  </label>
+            </div>
+            <div class="form-group">
+            	<input type="email" id="Email" name="Email" required>
+            	<label for="">Email</label>
+            </div><br>
+            
+            <input type="submit" value="Sign up for free" id="btn-signup">
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function validateForm() {
+            // Lấy giá trị từ các trường input
+            var Username = document.getElementById("Username").value;
+            var Password = document.getElementById("Password").value;
+            var confirm_pass = document.getElementById("Confirm_Password").value;
+            var date_of_birth = document.getElementById("date_of_birth").value;
+            console.log(date_of_birth)
+            var email = document.getElementById("Email").value;
+
+            // Kiểm tra điều kiện
+            if (Username === "" || /[^\w\s]/.test(Username)) {
+                alert("Vui lòng nhập lại Username. Username không được trống và không chứa ký tự đặc biệt.");
+                return false;
+            }
+
+            if (Password === "" || Password.length < 8) {
+                alert("Vui lòng nhập lại Mật khẩu. Mật khẩu phải có ít nhất 8 ký tự.");
+                return false;
+            }
+
+            if (Password !== confirm_pass) {
+                alert("Vui lòng nhập lại Mật khẩu nhập lại. Mật khẩu nhập lại không trùng khớp.");
+                return false;
+            }
+
+    //        if (!/^\d{10}$/.test(date_of_birth)) {
+    //            alert("Vui lòng nhập lại ngày sinh. Ngày sinh không được để trống.");
+    //            return false;
+    //        }
+
+            //if (Email === "" || !/\S+@\S+\.\S+/.test(Email)) {
+            //    alert("Vui lòng nhập lại Email. Email phải đúng định dạng và không được để trống.");
+            //    return false;
+            //}
+
+            // Nếu tất cả điều kiện đều thỏa mãn, thông báo đăng ký thành công
+            alert("Đăng ký thành công!");
+            return true;
+        }
+        document.getElementById('btn-signup').addEventListener('click', validateForm)
+
+    </script>
+</body>
+</html>
