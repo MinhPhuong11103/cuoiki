@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>lienhe</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing: border-box; 
+			font-family:'Poppins', sans-serif;
+		}
+		body{
+            background-image:url('C:/Tư liệu sign up/nhap.png') ;
+            background-repeat: no-repeat;
+            background-size: 1490.5px 672px;
+        }
+		
+		header {
+			position:fixed; 
+			top:0px; 
+			left:0; 
+			width:100%; 
+			height:12%;
+			padding:10px 100px; 
+			background:#E0F4FF; 
+			display:inline-flex;  
+			justify-content: space-between; 
+			alight-items:center; 
+			z-index: 99; 
+			border-bottom: 3px solid white;  
+		}
+		.logo{
+			position: relative;
+            bottom:-10px;
+            left: 10px;
+
+		}
+		
+		.navigation a{
+			position:relative;
+			font-size:1.1 em;
+			color:#230264;
+			text-decoration: none;
+			font-weight: 500;
+			margin-right:40px;
+			margin-top:10px ;
+
+
+		}
+		.navigation a::after{
+			content:'';
+			position:absolute;
+			left:0;
+			bottom:-15px;
+			width:100%;
+			height:3px;
+			background: #230264;
+			border-radius: 5px;
+			transform-origin:right;
+			transform:scaleX(0);
+			transition: transform .5s;
+
+		}
+		.navigation a:hover::after{
+			transform-origin:left;
+			transform: scalex(1);
+		}
+		nav ul {
+			list-style-type:none;
+			margin:35px ;
+			padding:0;
+			
+		}
+
+		nav ul li {
+			display: inline-block ;
+			margin-right:15px;
+			position: relative;
+		}
+		
+		
+		.contact-form {
+         margin-top: 190px;
+         margin-right:50px;
+         margin-bottom:150px;
+         width: 50%; /* Đặt chiều rộng của phần contact-form */
+         float: right; /* Dịch chuyển phần contact-form về bên phải */
+         
+        
+        }
+        .contact-form p {
+         margin-bottom: 10px; /* Thêm khoảng cách giữa dòng chữ và khung nhập */
+         color:#230264;
+         font-family:Arial;
+         font-size:45px;
+         }
+         .contact-form h5 {
+         margin-bottom: 30px; /* Thêm khoảng cách giữa dòng chữ và khung nhập */
+         color:#230264;
+         font-family:Arial;
+         font-size:15px;
+         }
+
+        .form-row {
+           display: flex;
+        }
+
+        .input-group {
+           margin: 10px;
+        }
+
+        label {
+           display: block;
+           margin-bottom: 5px;
+        }
+
+
+        input, textarea {
+           width: 100%;
+           padding: 8px;
+           box-sizing: border-box;
+           margin-bottom: 10px;
+           border-radius:10px ;
+        }
+
+        button {
+           background-color: #230264;
+           color: white;
+           padding: 10px;
+           border-radius: 10px;
+           cursor: pointer;
+         }
+
+        button:hover {
+           background-color: black;
+        }
+        .vb1,
+        .vb2 {
+         
+         width: 50%;
+         }
+         .vb1 {
+         	float:left;
+         	margin-left:110px;
+         	
+         }
+         .line {
+            height: 100%; 
+            width: 2px; 
+            background-color: red; 
+            margin-top: 100px; 
+            display: inline-block; 
+         }   
+         .vb2 {
+         	float:right;
+         	width:320px;
+         	margin-right:300px;
+         }
+         .footer {
+            background-color: #E0F4FF;
+            color: black;
+            padding:10px;
+            position: relative;
+            bottom: -900px;
+            left: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+         }
+
+         #logocuoitrang {
+         width: 120px;
+         top:-50px /* Điều chỉnh kích thước của logo theo ý muốn */
+        }
+
+        .footer-table {
+           border-collapse: collapse;
+           width: 100%; /* Điều chỉnh chiều rộng của bảng theo ý muốn */
+        }
+
+        .footer-table td {
+            border: 0px solid #ccc; /* Đường viền cho từng ô */
+            padding: 10px;
+            text-align: center;
+         }
+
+         
+	</style>
+
+</head>
+<body>
+	<header>
+
+
+		<img src="C:/Tư liệu sign up/Logo web(01).png" alt="" height="45px" width="135px" id="logo">
+	
+	<nav class="navigation">
+		<ul>
+		<li><a href="#">TRANG CHỦ</a></li>
+		<li><a href="#">BỘ CÂU HỎI </a></li>
+		<li><a href="#">TÀI LIỆU </a></li>
+		<li><a href="codethu.html">LIÊN HỆ</a></li>
+		<a href="#"><img src="C:/Tư liệu sign up/bell.png" alt="" height="25px" width="25px"  ></a>
+		<a href="thongtin.html"><img src="C:/Tư liệu sign up/icon acc.png" alt="" height="25px" width="25px" ></a>
+	    </ul>
+	</nav>
+
+	</header>
+
+	<section class="contact-form">
+        <form id="contactForm">
+        	<p><b>Do you need assistance?</b></p>
+        	<h5>We would be delighted to assist you. Please leave you information with us.<br>Your request will be processed and responded to as soon as possible.</h5>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="message">Message*</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section class="vb1">
+    	<h1 style="color:#230264"><b>STUDY CORE OF THE WEB</b></h1><br>
+    	<h5><b> STUDY CORE OF THE WEB</b> là trường học dành cho các nhà phát triển web,<br>bao gồm tất cả các khía cạnh của phát triển web.</h5><br>
+    	<h5>Chúng tôi tạo ra trải nghiệm học tập đơn giản và mang tính tương tác.</h5><br>
+    	<h5><b>Địa chỉ:</b> Tầng 12, Tòa nhà SSB, 199 Cầu Giấy, P.Quan Hoa, Q.Cầu Giấy, TP.Hà Nội.</h5>
+    </section>
+
+    <div class="line"></div>
+
+	<section class="vb2">
+	
+		<h1><b>LIÊN HỆ VỚI CHÚNG TÔI</b></h1><br>
+		<h5><b>Email:</b> studycoreoftheweb@gmail.com</h5><br>
+		<h5><b>SĐT:</b> 0979 102 199</h5><br>
+		<h5><b>Thời gian làm việc:</b> 8h - 21h (Thứ 2 - Thứ 7) </h5><br>
+		<h5><b>Fanpage: https://www.facebook.com/sw.vn</b></h5><br>
+
+	</section>
+
+	<section class="footer">
+    <div class="footer-content">
+        <div class="logo">
+            <!-- Thêm logo của bạn vào đây -->
+            <img src="C:/Tư liệu sign up/Logo web(01).png" alt="" id="logocuoitrang">
+        </div>
+        <table class="footer-table">
+            <tr>
+                <td>Trung tâm trợ giúp</td>
+                <td>Được chứng nhận</td>
+                <td>Về chúng tôi</td>
+                <td>Bảng tính</td>
+            </tr>
+            <tr>
+                <td>Điều khoản dịch vụ</td>
+                <td>Chính sách bảo mật</td>
+                <td>Tài liệu tham khảo</td>
+                <td>Sơ đồ trang web</td>
+            </tr>
+        </table>
+    </div>
+    </section>
+
+
+    
+</body>
+</html>
