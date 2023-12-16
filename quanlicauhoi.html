@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý câu hỏi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        #question-list table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #question-list th,
+        #question-list td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #question-list th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #question-list tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Danh sách câu hỏi</h1>
+
+    <div id="question-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Câu hỏi</th>
+                    <th>Đáp án</th>
+                    <th>Đáp án đúng</th>
+                    <th>Số lượng đáp án (nếu là trắc nghiệm)</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody id="question-table-body"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // Lấy dữ liệu từ localStorage
+        const questionData = JSON.parse(localStorage.getItem('questionData')) || [];
+
+        // Hiển thị dữ liệu trên trang
+        displayQuestions(questionData);
+
+        function displayQuestions(data) {
+            const tableBody = document.getElementById('question-table-body');
+
+            // Xóa nội dung cũ
+            tableBody.innerHTML = '';
+
+            // Hiển thị mỗi câu hỏi trong danh sách
+            data.forEach(question => {
+                const row = document.createElement('tr');
+
+                // Tạo và thêm cột cho mỗi thuộc tính của câu hỏi
+                const questionCell = document.createElement('td');
+                questionCell.textContent = question.question;
+                row.appendChild(questionCell);
+
+                const answerCell = document.createElement('td');
+                answerCell.textContent = question.answer;
+                row.appendChild(answerCell);
+
+                const correctAnswerCell = document.createElement('td');
+                correctAnswerCell.textContent = question.correctAnswer;
+                row.appendChild(correctAnswerCell);
+
+                const numOptionsCell = document.createElement('td');
+                numOptionsCell.textContent = question.numOptions || 'N/A';
+                row.appendChild(numOptionsCell);
+
+                // Tạo và thêm cột cho trạng thái
+                const statusCell = document.createElement('td');
+                statusCell.textContent = question.status || 'Chưa xác định';
+                row.appendChild(statusCell);
+
+                // Thêm dòng vào bảng
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+
+</html>
