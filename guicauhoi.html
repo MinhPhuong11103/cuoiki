@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lí câu hỏi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        #question-form,
+        #question-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #question-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #question-list th,
+        #question-list td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #question-list th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #question-list tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #multiple-choice-options {
+            display: none;
+        }
+        #correctAnswer{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="question-form">
+        <label for="question-type">Chọn loại câu hỏi:</label>
+        <select id="question-type" name="question-type">
+            <option value="dien">Điền</option>
+            <option value="tracnghiem">Trắc nghiệm</option>
+        </select>
+
+        <label for="question">Nhập câu hỏi:</label>
+        <input type="text" id="question" name="question">
+
+        <label id="label_answer">Nhập đáp án:</label>
+        <input type="text" id="answer" name="answer" class="nhapdapan">
+
+        <div id="multiple-choice-options">
+            <label for="num-options">Số lượng đáp án:</label>
+            <input type="number" id="num-options" name="num-options">
+
+            <!-- Vùng chứa để hiển thị câu trả lời -->
+            <div id="answer-inputs-container"></div>
+        </div>
+
+        <div id="correctAnswer">
+            <label for="correct-answer">Nhập đáp án đúng:</label>
+            <input type="text" id="correct-answer" name="correct-answer">
+        </div>
+        <button id="btn">Gửi câu hỏi</button>
+    </div>
+
+
+    <script>
+        document.getElementById('question-type').onchange = function () {
+            const questionType = document.getElementById('question-type').value;
+            const multipleChoiceOptions = document.getElementById('multiple-choice-options');
+            const answerInputsContainer = document.getElementById('answer-inputs-container');
+
+            if (questionType === 'tracnghiem') {
+                multipleChoiceOptions.style.display = 'block';
+                document.getElementById('label_answer').style.display = 'none';
+                document.getElementById('answer').style.display = 'none';
+                document.getElementById('correctAnswer').style.display = 'block';
+            } else {
+                multipleChoiceOptions.style.display = 'none';
+                
+            }
+        }
+
+        document.getElementById('num-options').onchange = function () {
+            const numOptions = parseInt(document.getElementById('num-options').value, 10);
+            const answerInputsContainer = document.getElementById('answer-inputs-container');
+
+            // xóa các thẻ input đã tồn tại
+            answerInputsContainer.innerHTML = '';
+
+            // tạo các thẻ input mới với số lượng nhập vào
+            for (let i = 1; i <= numOptions; i++) {
+                const label = document.createElement('label');
+                label.textContent = `Đáp án ${i}:`;
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.name = `answer-${i}`;
+                input.id = 'answer';
+                //sử dụng appendChild tạo phần tử mới  
+                answerInputsContainer.appendChild(label);
+                answerInputsContainer.appendChild(input);
+            }
+        }
+
+
+        function submitQuestion() {
+            // Lấy giá trị của các trường nhập liệu từ người dùng
+            const questionType = document.getElementById('question-type').value;
+            const questionText = document.getElementById('question').value;
+            const answerText = document.getElementById('answer').value;
+            const correctAnswerText = document.getElementById('correct-answer').value;
+            let numOptions;
+
+            // Nếu là câu hỏi trắc nghiệm, lấy số lượng đáp án
+            if (questionType === 'tracnghiem') {
+                numOptions = document.getElementById('num-options').value;
+            }
+
+            // Hiển thị câu hỏi trên trang web
+            displayQuestion(questionText, answerText, correctAnswerText, numOptions);
+
+            // Lưu dữ liệu vào localStorage
+            saveToLocalStorage(questionText, answerText, correctAnswerText, numOptions);
+        }
+
+        function displayQuestion(question, answer, correctAnswer, numOptions) {
+            // Your existing logic to display the question
+
+            // Example: Display in the console for demonstration purposes
+            console.log('Question displayed:', question, answer, correctAnswer, numOptions);
+        }
+
+        function saveToLocalStorage(question, answer, correctAnswer, numOptions) {
+            // Lấy dữ liệu từ localStorage (nếu có)
+            const existingData = JSON.parse(localStorage.getItem('questionData')) || [];
+
+            // Thêm câu hỏi mới vào danh sách
+            existingData.push({
+                question: question,
+                answer: answer,
+                correctAnswer: correctAnswer,
+                numOptions: numOptions
+            });
+
+            // Lưu danh sách câu hỏi vào localStorage
+            localStorage.setItem('questionData', JSON.stringify(existingData));
+        }
+
+        document.getElementById('btn').onclick = function () {
+            submitQuestion();
+        }
+    </script>
+
+</body>
+
+</html>
