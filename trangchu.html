@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <style>
+        #logo {
+            margin-top: 20px;
+            margin-left: 35px;
+        }
+
+        a {
+            position:relative;
+			font-size:20px;
+			color:#230264;
+			text-decoration: none;
+			margin-right:80px;
+            font-family: montserra;
+        }
+
+        a::after{
+			content:'';
+			position:absolute;
+			left:0;
+			bottom:-6px;
+			width:100%;
+			height:3px;
+			background: #230264;
+			border-radius: 5px;
+			transform:scaleX(0);
+			transition: transform .5s;
+		}
+        a:hover::after{
+			transform: scalex(1);
+		}
+        #tabar {
+            display: flex;
+            background-color: #E0F4FF;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #CCCCCC; 
+        }
+        #menu_tabar{
+            margin-top: 45px;
+            margin-left: 100px;
+        }
+
+        #signup {
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: #1B1464;
+            color: #E0F4FF;
+            margin-left: 50px;
+        }
+
+        #content {
+            background-image: url('background.png');
+            background-size: cover;
+            width: 100%;
+            height: 850px;
+            text-align: center;
+            margin-top: -32px;
+        }
+
+        h2 {
+            color: #1B1464;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 50px 0px 15px;
+            font-size: 40px;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        p {
+            color: #000000;
+            padding-bottom: 15px;
+            width: 600px;
+            margin-left: 30%;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #inp_search {
+            width: 400px;
+            height: 50px;
+            border-radius: 15px 0px 0px 15px;
+            color: #DDD;
+            padding-left: 20px;
+            margin-bottom: 100px;
+        }
+
+        #btn_search {
+            background-color: #1B1464;
+            margin: 0px -4px -13px;
+            border-radius: 0px 15px 15px 0px;
+            width: 120px;
+            height: 55px;
+            color: rgb(254, 238, 238);
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="tabar">
+        <img src="Logo web(01).png" alt="" id="logo" width="160px">
+        <nav id="menu_tabar">
+            <a href="" id="trangchu">TRANG CHỦ</a>    
+            <a href="listquestion.html" id="bocauhoi">GỬI CÂU HỎI</a>   
+            <a href="" id="tailieu">TÀI LIỆU</a> 
+            <a href="" id="lienhe">LIÊN HỆ</a>  
+            <a href="" id="taikhoan">TÀI KHOẢN</a>    
+            <input type="button" value="Đăng xuất" id="signup">
+        </nav>
+    </header>
+
+    <div id="content">
+        <h2>WELCOM TO THE STUDY CODE OF THE WEB</h2>
+
+        <input type="text" id="inp_search" placeholder="Tìm kiếm câu hỏi HTMLL, CSS, JS, ..."> <input type="button"
+            value="Tìm kiếm" id="btn_search">
+
+        <p>Trang web của chúng tôi là nơi tuyệt vời để bạn khám phá và học hỏi về ngôn ngữ lập trình quan trọng nhất
+            trong việc xây dựng và thiết kế trang web - HTML, CSS và JAVASCRIPT. Dù bạn là một người mới bắt đầu muốn
+            hiểu rõ cơ bản
+            hay một chuyên gia muốn nâng cao kỹ năng, chúng tôi đều có những tài nguyên phong phú và chất lượng để hỗ
+            trợ mọi hành trình học của bạn.
+            Hãy bắt đầu hành trình học tập của bạn ngay hôm nay và khám phá vô số kiến thức hữu ích tại trang web của
+            chúng tôi. Chúc bạn thành công và sáng tạo trên con đường phát triển web!
+        </p>
+    </div>
+
+    <script>
+        var taikhoan = localStorage.getItem('taikhoan');
+        //kiểm tra đã đăng nhập chưa nếu chưa đăng nhập thì chuyển về giao diện đăng nhập
+        // if(!taikhoan){
+        //     window.location.href = 'login.html';
+        // }
+        // if(taikhoan === 'admin'){
+        //     document.getElementById('bocauhoi').innerText = 'QUẢN LÍ CÂU HỎI';
+        //     document.getElementById('bocauhoi').onclick = function(){
+        //         window.location.href = 'quanlicauhoi.html';
+        //     }
+        // }else{
+        //     document.getElementById('bocauhoi').onclick = function(){
+        //         window.location.href = 'listquestion.html';
+        //     }
+        // }
+        document.getElementById('signup').onclick = function(){
+            location.assign('login.html');
+        }
+        
+    </script>
+</body>
+
+</html>
